@@ -1,0 +1,29 @@
+pointsForDistances <- function(distances, dim = 0 , searchMethod = "mds", plotIt = FALSE) {
+
+require("MASS")
+#library("dbt.Plot")
+distDim <- ncol(as.matrix(distances))
+
+if (dim < 1) {
+dim <- max(2, min(500, (distDim -1)))
+}
+
+if (searchMethod =="sammon") {
+points <- sammon(distances, k = dim)[[1]]
+}
+else {
+points <- cmdscale(distances, k = dim)
+}
+
+pointsDistances <- dist(points, method = "euclidean")
+error <- distances - pointsDistances
+MSSE <- sqrt( sum(error^2 )) / distDim
+if(plotIt){
+  plot(distances,pointsDistances,pch=15,col="blue",
+        main=paste("Sheppard diagram, point dimension =",dim,", MSSError=",MSSE,sep=""),
+        xlab="Distances",ylab="distances between points, red = identity")
+  lines(pointsDistances,pointsDistances,col="red")  
+  grid(max(axTicks(1))/.1,max(axTicks(2))/.1,col="black",lty="dashed")
+}
+return(list(points = points, MSSE = MSSE, error = error))
+}
