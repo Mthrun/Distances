@@ -1,16 +1,16 @@
 Package: Distances
 Type: Package
 Title: Functions For Different Distance Measures
-Version: 1.0.3
-Date: 2016-10-20
+Version: 1.0.4
+Date: 2019-03-27
 Author: Raphael Paebst, Felix Pape, Michael Thrun
 Maintainer: <mthrun@mathematik.uni-marburg.de>
 Suggests: FastKNN, MASS, vegan, sphet, lsa, pracma
 Imports: Rcpp, RcppArmadillo
 Depends: methods, AdaptGauss
-#Depends: dbt.general, dbt.Statistics, dbt.pareto, dbt.classifiers, dbt.Plot
+#Depends: parallelDist, dbt.general, dbt.Statistics, dbt.pareto, dbt.classifiers, dbt.Plot
 Description: Functions for calculating distances using euclidean, city-block and minkovsky metrics, finding nearest neighbours to data points and stuff like that.
 LinkingTo: Rcpp, RcppArmadillo
-License: GPL-3
+License: CC BY-NC 4.0
 LazyLoad: yes
 Encoding: UTF-8

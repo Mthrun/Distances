@@ -38,9 +38,9 @@ DistanceMatrix = function(X,method='euclidean',dim=2,outputisvector=FALSE){
   }
   switch(
     method,
-    euclidean = {
-      Dmatrix = as.matrix(dist(X, method = "euclidean", p = dim))
-    },
+    #euclidean = {
+    #  Dmatrix = as.matrix(dist(X, method = "euclidean", p = dim))
+   # },
     sqEuclidean = {
       Dmatrix = (as.matrix(dist(X, method = "euclidean", p = dim))) ^ 2
     },
@@ -57,19 +57,27 @@ DistanceMatrix = function(X,method='euclidean',dim=2,outputisvector=FALSE){
         type = "distance"
       )
     },
-    cityblock = {
-      Dmatrix = as.matrix(dist(X, method = "manhattan"))
-    },
+   # cityblock = {
+     # Dmatrix = as.matrix(dist(X, method = "manhattan"))
+   # },
     pearson = {
       #Dmatrix = as.matrix(arules::dissimilarity(X, method = "pearson"))
       Dmatrix=1-cor(t(X),method = 'pearson')
     },
-    maximum = {
-      Dmatrix = as.matrix(dist(X, method = "maximum"))
-    },
-    canberra = {
-      Dmatrix = as.matrix(dist(X, method = "canberra"))
-    },
+   # maximum = {
+     # Dmatrix = as.matrix(dist(X, method = "maximum"))
+   # },
+   # canberra = {
+     # Dmatrix = as.matrix(dist(X, method = "canberra"))
+   # },
+   fractional = {
+    Dmatrix = FractionalDistance(X, dim)
+   },
+   fagerDissimilarity = {
+     requireNamespace('parallelDist')
+     DD = as.matrix(parallelDist::parDist(X, method = 'fager'))
+     Dmatrix=-DD
+   },
     cosine = {
       #requireRpackage("lsa")
 	    #requireNamespace('lsa')
@@ -89,21 +97,25 @@ DistanceMatrix = function(X,method='euclidean',dim=2,outputisvector=FALSE){
         type = "distance"
       )
     },
-    jaccard = {
-      Dmatrix = jaccard(X)
-    },
-    mahalanobis = {
-      Sx = cov(X)
-      Dmatrix = Mahalanobis(X, Sx)
-    },
+   # jaccard = {
+    #  Dmatrix = jaccard(X)
+    #},
+    #mahalanobis = {
+    #  Sx = cov(X)
+     # Dmatrix = Mahalanobis(X, Sx)
+    #},
     minkowski = {
-      Dmatrix = as.matrix(dist(X, method = "minkowski", p = dim))
+      #Dmatrix = as.matrix(dist(X, method = "minkowski", p = dim))
+    requireNamespace('parallelDist')
+    Dmatrix = as.matrix(parallelDist::parDist(X, method = method,p=dim))
     },
-    manhattan = {
-      Dmatrix = as.matrix(dist(X, method = "manhattan"))
-    },
+   # manhattan = {
+   #   Dmatrix = as.matrix(dist(X, method = "manhattan"))
+   # },
     {
-      return("Error! Bitte den String der Methodenauswahl ueberpruefen")
+      requireNamespace('parallelDist')
+      Dmatrix = as.matrix(parallelDist::parDist(X, method = method))
+      #return("Error! Bitte den String der Methodenauswahl ueberpruefen")
     }
   )
   if (!outputisvector) {
