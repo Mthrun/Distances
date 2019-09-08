@@ -1,11 +1,11 @@
 Package: Distances
 Type: Package
 Title: Functions For Different Distance Measures
-Version: 1.0.4
-Date: 2019-03-27
+Version: 1.0.5
+Date: 2019-06-08
 Author: Raphael Paebst, Felix Pape, Michael Thrun
 Maintainer: <mthrun@mathematik.uni-marburg.de>
-Suggests: FastKNN, MASS, vegan, sphet, lsa, pracma
+Suggests: parallelDist, FastKNN, MASS, vegan, sphet, lsa, pracma
 Imports: Rcpp, RcppArmadillo
 Depends: methods, AdaptGauss
 #Depends: parallelDist, dbt.general, dbt.Statistics, dbt.pareto, dbt.classifiers, dbt.Plot

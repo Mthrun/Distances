@@ -1,6 +1,6 @@
 tfidfWieInMatlab <- function(DocumentsVsTerms){
-# Distances = tfitfidfWieInMatlabdf(DocumentsTermsData);
-# calcluates the term frequency–inverse document frequency (tfidf)
+# Distances = tfitfidfWieInMatlabdf(DocumentsTermsData)
+# calcluates the term frequency-inverse document frequency (tfidf)
 # tfidf is normalized such that unimportant differences are < 1
 #
 # INPUT
