@@ -19,7 +19,7 @@ paretoRadius <- ParetoRadius(distances)
 pce <- PCE(distances, paretoRadius)
 cumulativeKernels <- pce[[1]]
 cumulativeDistanceDensity <- pce[[2]]
-pdeEstimation <- ParetoDensityEstimation(distances, paretoRadius)
+pdeEstimation <- DataVisualizations::ParetoDensityEstimation(distances, paretoRadius)
 kernels <- pdeEstimation[[1]]
 pdeDistance <- pdeEstimation[[2]]
 

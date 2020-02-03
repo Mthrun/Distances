@@ -1,8 +1,8 @@
 Package: Distances
 Type: Package
 Title: Functions For Different Distance Measures
-Version: 1.0.5
-Date: 2019-06-08
+Version: 1.0.6
+Date: 2020-02-02
 Author: Raphael Paebst, Felix Pape, Michael Thrun
 Maintainer: <mthrun@mathematik.uni-marburg.de>
 Suggests: parallelDist, FastKNN, MASS, vegan, sphet, lsa, pracma
